@@ -16,7 +16,7 @@ namespace Project2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ViewAllinTable();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -26,7 +26,7 @@ namespace Project2
 
         protected void MultiView1_ActiveViewChanged(object sender, EventArgs e)
         {
-
+            ViewAllinTable();
         }
 
         protected void btnDel_Click(object sender, EventArgs e)
@@ -37,7 +37,6 @@ namespace Project2
         protected void Button1_Click1(object sender, EventArgs e)
         {
             string filename = Path.GetFileName(FileUpload1.PostedFile.FileName);
-            //string contentType = FileUpload1.PostedFile.ContentType;
             using (Stream fs = FileUpload1.PostedFile.InputStream)
             {
                 using (BinaryReader br = new BinaryReader(fs))
@@ -50,7 +49,6 @@ namespace Project2
                         using (SqlCommand cmd = new SqlCommand(query))
                         {
                             cmd.Connection = con;
-                            //cmd.Parameters.AddWithValue("@ID", filename);
                             cmd.Parameters.AddWithValue("@FILENAME", filename);
                             cmd.Parameters.AddWithValue("@Data", bytes);
                             con.Open();
@@ -60,6 +58,46 @@ namespace Project2
                     }
                 }
             }
+            ViewAllinTable();
+            
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            string qstring = boxDel.Text;
+
+            string constr = "Data Source=tcp:project2picsdb.database.windows.net,1433;Initial Catalog=project2picsdb;User Id=Marnus@project2picsdb;Password=Just1013#";
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string query = "DELETE FROM PICS WHERE FILENAME = '" + qstring + "'";
+                using (SqlCommand cmd = new SqlCommand(query))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    
+                }
+            }
+            ViewAllinTable();
+
+        }
+        protected void ViewAllinTable()
+        {
+            string constr = "Data Source=tcp:project2picsdb.database.windows.net,1433;Initial Catalog=project2picsdb;User Id=Marnus@project2picsdb;Password=Just1013#";
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string query = "SELECT * FROM PICS";
+                using (SqlCommand cmd = new SqlCommand(query))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+                }
+            }
+            GridView1.DataBind();
         }
 
     }

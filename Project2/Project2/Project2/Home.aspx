@@ -27,13 +27,16 @@
             margin-left: 12px;
         }
         .auto-style7 {
-            margin-left: 0px;
+            margin-left: 14px;
         }
         .auto-style8 {
             margin-left: 18px;
         }
         .auto-style9 {
             margin-left: 7px;
+        }
+        .auto-style10 {
+            margin-left: 6px;
         }
     </style>
 </head>
@@ -50,21 +53,40 @@
                 <asp:Label ID="Label2" runat="server" Text="Please Select Image to Upload:"></asp:Label>
                 <asp:FileUpload ID="FileUpload1" runat="server" CssClass="auto-style9" />
                 <asp:Button ID="Button1" runat="server" CssClass="auto-style8" OnClick="Button1_Click1" Text="Add Image to Database" />
-                <asp:Button ID="Button2" runat="server" CssClass="auto-style7" Text="Remove Image from Database" />
+                <asp:Label runat="server" Text="Please Enter the Filename of the Image to be Deleted:"></asp:Label>
+                <asp:TextBox ID="boxDel" runat="server" CssClass="auto-style10"></asp:TextBox>
+                <asp:Button ID="Button2" runat="server" CssClass="auto-style7" Text="Remove Image from Database" OnClick="Button2_Click" />
             </asp:View>
             <asp:View ID="viewAll" runat="server">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="DataSource">
-                    <Columns>
-                        <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
-                        <asp:BoundField DataField="FILENAME" HeaderText="FILENAME" SortExpression="FILENAME" />
-                    </Columns>
-                </asp:GridView>
-                <asp:SqlDataSource ID="DataSource" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" SelectCommand="SELECT * FROM [PICS]"></asp:SqlDataSource>
                 <asp:Label ID="Label1" runat="server" Text="Enter Filename to Search By:"></asp:Label>
                 <asp:TextBox ID="txtSearch" runat="server" CssClass="auto-style5" Width="130px"></asp:TextBox>
                 <asp:Button ID="btnSearch" runat="server" CssClass="auto-style6" Text="Search" />
             </asp:View>
         </asp:MultiView>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="DataSource1">
+            <Columns>
+                <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                <asp:BoundField DataField="FILENAME" HeaderText="FILENAME" SortExpression="FILENAME" />
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="DataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" DeleteCommand="DELETE FROM [PICS] WHERE [ID] = @original_ID AND (([FILENAME] = @original_FILENAME) OR ([FILENAME] IS NULL AND @original_FILENAME IS NULL)) AND (([DATA] = @original_DATA) OR ([DATA] IS NULL AND @original_DATA IS NULL))" InsertCommand="INSERT INTO [PICS] ([FILENAME], [DATA]) VALUES (@FILENAME, @DATA)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [PICS]" UpdateCommand="UPDATE [PICS] SET [FILENAME] = @FILENAME, [DATA] = @DATA WHERE [ID] = @original_ID AND (([FILENAME] = @original_FILENAME) OR ([FILENAME] IS NULL AND @original_FILENAME IS NULL)) AND (([DATA] = @original_DATA) OR ([DATA] IS NULL AND @original_DATA IS NULL))">
+            <DeleteParameters>
+                <asp:Parameter Name="original_ID" Type="Int32" />
+                <asp:Parameter Name="original_FILENAME" Type="String" />
+                <asp:Parameter Name="original_DATA" Type="Object" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="FILENAME" Type="String" />
+                <asp:Parameter Name="DATA" Type="Object" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="FILENAME" Type="String" />
+                <asp:Parameter Name="DATA" Type="Object" />
+                <asp:Parameter Name="original_ID" Type="Int32" />
+                <asp:Parameter Name="original_FILENAME" Type="String" />
+                <asp:Parameter Name="original_DATA" Type="Object" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
     </form>
 </body>
 </html>
