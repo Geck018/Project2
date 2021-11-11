@@ -9,95 +9,127 @@
         .auto-style1 {
             width: 100%;
             height: 160px;
-            margin-top: 35px;
-        }
-        .auto-style2 {
-            width: 67px;
-        }
-        .auto-style3 {
-            width: 134px;
+            margin-top: 3px;
         }
         .auto-style4 {
             width: 100%;
             height: 153px;
-        }
-        .auto-style6 {
-            width: 294px;
+            margin-top: 4px;
         }
         .auto-style7 {
-            width: 69px;
+            width: 77px;
         }
         .auto-style8 {
-            width: 53px;
+            width: 95px;
+        }
+        .auto-style9 {
+            width: 150px;
+        }
+        .auto-style10 {
+            width: 77px;
+            height: 42px;
+        }
+        .auto-style12 {
+            width: 95px;
+            height: 42px;
+        }
+        .auto-style13 {
+            height: 42px;
+        }
+        .auto-style15 {
+            width: 150px;
+            height: 42px;
         }
     </style>
 </head>
 <body style="height: 595px">
     <form id="form1" runat="server">
-        <table class="auto-style1">
+        WELCOME TO IMAGEHUB<table class="auto-style1">
             <tr>
-                <td class="auto-style2">Username:</td>
-                <td class="auto-style3">
+                <td class="auto-style10"></td>
+                <td class="auto-style15">
+                </td>
+                <td class="auto-style13">Login</td>
+            </tr>
+            <tr>
+                <td class="auto-style10">Username:</td>
+                <td class="auto-style15">
                     <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                 </td>
-                <td></td>
+                <td class="auto-style13"></td>
             </tr>
             <tr>
-                <td class="auto-style2">Password:</td>
-                <td class="auto-style3">
+                <td class="auto-style10">Password:</td>
+                <td class="auto-style15">
                     <input id="Password1" type="password" /></td>
-                <td>&nbsp;</td>
+                <td class="auto-style13"></td>
             </tr>
             <tr>
-                <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style3">
-                    <asp:Button ID="btnLogin" runat="server" Text="Login" />
+                <td class="auto-style10">
+                    <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
                 </td>
-                <td>&nbsp;</td>
+                <td class="auto-style15">
+                </td>
+                <td class="auto-style13"></td>
             </tr>
         </table>
-        <table class="auto-style4">
+        OR<table class="auto-style4" id="tableCreate">
             <tr>
                 <td class="auto-style7">
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <input id="Text1" type="text" /></td>
+                    &nbsp;</td>
+                <td class="auto-style9">
+                    &nbsp;</td>
                 <td class="auto-style8">
-                    <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
-                </td>
+                    Create New Account</td>
                 <td>
-                    <input id="Text2" type="text" /></td>
+                    &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style7">
-                    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                <td class="auto-style10">
+                    <asp:Label ID="Label1" runat="server" Text="Username"></asp:Label>
+                    :</td>
+                <td class="auto-style15">
+                    <asp:TextBox ID="txtUsernameCreate" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style6">
-                    <input id="boxPW" type="password" /></td>
-                <td class="auto-style8">
-                    <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+                <td class="auto-style12">
+                    First Name:</td>
+                <td class="auto-style13">
+                    <asp:TextBox ID="txtFnameCreate" runat="server"></asp:TextBox>
                 </td>
-                <td>
-                    <input id="Text3" type="text" /></td>
             </tr>
             <tr>
-                <td class="auto-style7">
-                    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                <td class="auto-style10">
+                    Password:</td>
+                <td class="auto-style15">
+                    <asp:TextBox ID="txtPWCreate" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style6">
-                    <input id="boxPWConfirm" type="password" /></td>
-                <td class="auto-style8">
-                    <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
+                <td class="auto-style12">
+                    Surname:</td>
+                <td class="auto-style13">
+                    <asp:TextBox ID="txtLnameCreate" runat="server"></asp:TextBox>
                 </td>
-                <td>
-                    <input id="Text4" type="text" /></td>
             </tr>
             <tr>
-                <td class="auto-style7">&nbsp;</td>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style8">&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style10">
+                    Confirm Password:</td>
+                <td class="auto-style15">
+                    <asp:TextBox ID="txtPWCreateConfirm" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style12">
+                    Email:</td>
+                <td class="auto-style13">
+                    <asp:TextBox ID="txtMailCreate" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style10">
+                    <asp:Button ID="btnFinishCreate" runat="server" OnClick="btnFinishCreate_Click" Text="Create" />
+                </td>
+                <td class="auto-style15">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" SelectCommand="SELECT * FROM [USERDETAILS]"></asp:SqlDataSource>
+                </td>
+                <td class="auto-style12"></td>
+                <td class="auto-style13"></td>
             </tr>
         </table>
     </form>
