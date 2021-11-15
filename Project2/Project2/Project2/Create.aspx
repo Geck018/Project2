@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Project2.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Create.aspx.cs" Inherits="Project2.Create" %>
 
 <!DOCTYPE html>
 
@@ -7,135 +7,105 @@
     <title></title>
     <style type="text/css">
         .auto-style1 {
-            width: 100%;
-            height: 160px;
-            margin-top: 3px;
+            width: 417px;
+        }
+        .auto-style2 {
+            width: 108px;
+        }
+        .auto-style3 {
+            width: 130px;
         }
         .auto-style4 {
-            width: 100%;
-            height: 153px;
-            margin-top: 4px;
+            width: 130px;
+            height: 40px;
+        }
+        .auto-style5 {
+            width: 417px;
+            height: 40px;
+        }
+        .auto-style6 {
+            width: 108px;
+            height: 40px;
         }
         .auto-style7 {
-            width: 77px;
-        }
-        .auto-style8 {
-            width: 95px;
-        }
-        .auto-style9 {
-            width: 150px;
-        }
-        .auto-style10 {
-            width: 77px;
-            height: 42px;
-        }
-        .auto-style12 {
-            width: 95px;
-            height: 42px;
-        }
-        .auto-style13 {
-            height: 42px;
-        }
-        .auto-style15 {
-            width: 150px;
-            height: 42px;
+            height: 40px;
         }
     </style>
 </head>
-<body style="height: 595px">
+<body>
     <form id="form1" runat="server">
-        WELCOME TO IMAGEHUB<strong>OR</strong><asp:Panel ID="pnl2" runat="server">
-            <table class="auto-style4" id="tableCreate">
+        <div>
+            <table style="width:100%;">
                 <tr>
-                    <td class="auto-style7">&nbsp;</td>
-                    <td class="auto-style9">&nbsp;</td>
-                    <td class="auto-style8">Create New Account</td>
+                    <td class="auto-style3">&nbsp;</td>
+                    <td class="auto-style1">
+                        <asp:Label ID="Label1" runat="server" Font-Bold="True" Text="WELCOME TO IMAGEHUB!"></asp:Label>
+                    </td>
+                    <td class="auto-style2">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style10">
-                        <asp:Label ID="Label1" runat="server" Text="Username"></asp:Label>
-                        :</td>
-                    <td class="auto-style15">
-                        <asp:TextBox ID="txtUsernameCreate" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="valUserName" runat="server" ControlToValidate="txtUsernameCreate" ErrorMessage="This Field is Required!" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <td class="auto-style4"></td>
+                    <td class="auto-style5">Please Create your account below:</td>
+                    <td class="auto-style6">&nbsp;</td>
+                    <td class="auto-style7">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">
+                        <asp:Label ID="Label2" runat="server" Text="Username:"></asp:Label>
                     </td>
-                    <td class="auto-style12">First Name:</td>
-                    <td class="auto-style13">
-                        <asp:TextBox ID="txtFnameCreate" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFnameCreate" ErrorMessage="This Field is Required!" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <td class="auto-style1">
+                        <asp:TextBox ID="txtUsrName" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style2">
+                        <asp:Label ID="Label5" runat="server" Text="First Name:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtFname" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style10">Password:</td>
-                    <td class="auto-style15">
-                        <asp:TextBox ID="txtPWCreate" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="valPW" runat="server" ControlToValidate="txtPWCreate" ErrorMessage="This Field is Required!" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <td class="auto-style3">
+                        <asp:Label ID="Label3" runat="server" Text="Password:"></asp:Label>
                     </td>
-                    <td class="auto-style12">Surname:</td>
-                    <td class="auto-style13">
-                        <asp:TextBox ID="txtLnameCreate" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtLnameCreate" ErrorMessage="This Field is Required!" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <td class="auto-style1">
+                        <asp:TextBox ID="txtPW" runat="server"></asp:TextBox>
                     </td>
-                </tr>
-                <tr>
-                    <td class="auto-style10">Confirm Password:</td>
-                    <td class="auto-style15">
-                        <asp:TextBox ID="txtPWCreateConfirm" runat="server"></asp:TextBox>
-                        <asp:CompareValidator ID="valPWCompare" runat="server" ControlToCompare="txtPWCreate" ControlToValidate="txtPWCreateConfirm" ErrorMessage="Passwords Must Match!" ForeColor="Red"></asp:CompareValidator>
+                    <td class="auto-style2">
+                        <asp:Label ID="Label6" runat="server" Text="Last Name:"></asp:Label>
                     </td>
-                    <td class="auto-style12">Email:</td>
-                    <td class="auto-style13">
-                        <asp:TextBox ID="txtMailCreate" runat="server"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtMailCreate" ErrorMessage="The Email Entered is not in the Correct Format!" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                    <td>
+                        <asp:TextBox ID="txtLname" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style10">
-                        <asp:Button ID="btnFinishCreate" runat="server" OnClick="btnFinishCreate_Click" Text="Create" />
+                    <td class="auto-style3">
+                        <asp:Label ID="Label4" runat="server" Text="Confirm Password:"></asp:Label>
                     </td>
-                    <td class="auto-style15">
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" SelectCommand="SELECT * FROM [USERDETAILS]"></asp:SqlDataSource>
+                    <td class="auto-style1">
+                        <asp:TextBox ID="txtPWConfirm" runat="server"></asp:TextBox>
                     </td>
-                    <td class="auto-style12">
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" SelectCommand="SELECT * FROM [USERPW]"></asp:SqlDataSource>
+                    <td class="auto-style2">
+                        <asp:Label ID="Label7" runat="server" Text="Email:"></asp:Label>
                     </td>
-                    <td class="auto-style13">
-                        <asp:Button ID="btnLoginSwitch" runat="server" OnClick="btnLoginSwitch_Click" Text="Click Here to Login Instead" />
+                    <td>
+                        <asp:TextBox ID="txtMail" runat="server"></asp:TextBox>
                     </td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">&nbsp;</td>
+                    <td class="auto-style1">
+                        <asp:Button ID="Button1" runat="server" Text="Create Account" />
+                    </td>
+                    <td class="auto-style2">
+                        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Go To Login Page" />
+                    </td>
+                    <td>&nbsp;</td>
                 </tr>
             </table>
-        </asp:Panel>
-        <asp:Panel ID="pnl1" runat="server">
-            <table class="auto-style1">
-                <tr>
-                    <td class="auto-style10"></td>
-                    <td class="auto-style15"></td>
-                    <td class="auto-style13">Login</td>
-                </tr>
-                <tr>
-                    <td class="auto-style10">Username:</td>
-                    <td class="auto-style15">
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                    </td>
-                    <td class="auto-style13"></td>
-                </tr>
-                <tr>
-                    <td class="auto-style10">Password:</td>
-                    <td class="auto-style15">
-                        <input id="Password1" type="password" />
-                    </td>
-                    <td class="auto-style13"></td>
-                </tr>
-                <tr>
-                    <td class="auto-style10">
-                        <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
-                    </td>
-                    <td class="auto-style15"></td>
-                    <td class="auto-style13"></td>
-                </tr>
-            </table>
-        </asp:Panel>
+            <asp:Panel ID="Panel1" runat="server">
+            </asp:Panel>
+        </div>
     </form>
 </body>
 </html>
