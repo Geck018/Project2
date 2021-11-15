@@ -43,6 +43,7 @@
                 <tr>
                     <td>
                         <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Login" />
+                        <asp:Label ID="lblErr" runat="server" ForeColor="Red" Text="Please Fill in All Information" Visible="False"></asp:Label>
                     </td>
                     <td>
                         <asp:Button ID="btnCreate" runat="server" OnClick="btnCreate_Click" Text="Create Account" />

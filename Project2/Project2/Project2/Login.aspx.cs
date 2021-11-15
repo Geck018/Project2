@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
 using System.Security.Cryptography;
+using System.Data.SqlClient;
 
 
 namespace Project2
@@ -14,7 +15,7 @@ namespace Project2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -36,9 +37,43 @@ namespace Project2
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            var pw = txtPW.Text;
-            var newSalt = generateSalt();
-            var hashedPW = generateHash(Encoding.UTF8.GetBytes(pw), Encoding.UTF8.GetBytes(newSalt));
+            if (!String.IsNullOrEmpty(txtPW.Text)&&!String.IsNullOrEmpty(txtUsrName.Text))
+            {
+                lblErr.Visible = false;
+                var pw = txtPW.Text;
+                var newSalt = generateSalt();
+                var hashedPW = generateHash(Encoding.UTF8.GetBytes(pw), Encoding.UTF8.GetBytes(newSalt));
+                var qstring = hashedPW;
+                string constr = SqlDataSource1.ConnectionString;
+                using (SqlConnection con = new SqlConnection (constr))
+                {
+                    string query = SqlDataSource1.SelectCommand;
+
+                    using (SqlCommand cmd = new SqlCommand(query))
+                    {                        
+                        cmd.Connection = con;
+                        con.Open();
+                        object val = cmd.ExecuteScalar();
+                        var pwtocheck = Convert.ToInt32(val);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        if (Convert.ToInt32(hashedPW) == pwtocheck)
+                        {
+                            
+                        }
+                    }
+
+                }
+                
+            }
+            else
+            {
+                lblErr.Visible = true;
+                txtPW.Text = "";
+                txtUsrName.Text = "";
+            }
+ 
+
         }
     }
 }
