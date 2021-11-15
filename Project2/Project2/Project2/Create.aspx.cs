@@ -13,27 +13,20 @@ namespace Project2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            pnl1.Visible = false;
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            var pw = txtPWCreate.Text;
-            var newSalt = GenerateSalt();
-            var hashedpw = CreateHash(Encoding.UTF8.GetBytes(pw), Encoding.UTF8.GetBytes(newSalt));
-            if (txtPWCreate.Text == txtPWCreateConfirm.Text)
-            {
-                Response.Redirect("Home.aspx");
-            }
-            else
-            {
-                
-            }
+
         }
 
         protected void btnFinishCreate_Click(object sender, EventArgs e)
         {
-
+            var pw = txtPWCreate.Text;
+            var newSalt = GenerateSalt();
+            var hashedpw = CreateHash(Encoding.UTF8.GetBytes(pw), Encoding.UTF8.GetBytes(newSalt));
+  
         }
 
         protected string CreateHash(byte[] bytesHash, byte[] salt)
@@ -48,6 +41,20 @@ namespace Project2
             var rng = new RNGCryptoServiceProvider();
             rng.GetBytes(bytes);
             return Convert.ToBase64String(bytes);
+        }
+
+        protected void btnLoginSwitch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                pnl1.Visible = true;
+                pnl2.Visible = false;
+            }
+            catch
+            {
+
+            }
+
         }
     }
 }
