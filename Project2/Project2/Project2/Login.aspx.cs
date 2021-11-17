@@ -54,15 +54,15 @@ namespace Project2
                         cmd.Connection = con;
                         con.Open();
                         object val = cmd.ExecuteScalar();
-                        var pwtocheck = Convert.ToInt32(val);
+                        var salttocheck = val.ToString();
+                        //var
                         cmd.ExecuteNonQuery();
                         con.Close();
-                        if (Convert.ToInt32(hashedPW) == pwtocheck)
+                        if (qstring == //pwtocheck)
                         {
-                            
+                            Response.Redirect("Home.aspx");  
                         }
                     }
-
                 }
                 
             }

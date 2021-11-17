@@ -52,7 +52,7 @@
                 </tr>
             </table>
             <asp:Panel ID="Panel1" runat="server">
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" SelectCommand="SELECT User_PW, Salt FROM USERDETAILS ud INNER JOIN USERPW up ON (up.User_ID = ud.User_ID)"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" SelectCommand="SELECT [Salt] FROM [USERPW]"></asp:SqlDataSource>
             </asp:Panel>
         </div>
     </form>

@@ -95,12 +95,14 @@
                 <tr>
                     <td class="auto-style3">&nbsp;</td>
                     <td class="auto-style1">
-                        <asp:Button ID="Button1" runat="server" Text="Create Account" />
+                        <asp:Button ID="btnFinalise" runat="server" Text="Create Account" OnClick="btnFinalise_Click" />
                     </td>
                     <td class="auto-style2">
                         <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Go To Login Page" />
                     </td>
-                    <td>&nbsp;</td>
+                    <td>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" SelectCommand="SELECT * FROM [USERDETAILS]"></asp:SqlDataSource>
+                    </td>
                 </tr>
             </table>
             <asp:Panel ID="Panel1" runat="server">
