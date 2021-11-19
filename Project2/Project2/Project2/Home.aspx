@@ -20,72 +20,134 @@
             width: 813px;
             margin-left: 280px;
         }
-        .auto-style5 {
-            margin-left: 8px;
-        }
-        .auto-style6 {
-            margin-left: 12px;
-        }
-        .auto-style7 {
-            margin-left: 14px;
-        }
         .auto-style8 {
             margin-left: 18px;
         }
         .auto-style9 {
             margin-left: 7px;
         }
-        .auto-style10 {
-            margin-left: 6px;
+        .auto-style11 {
+            width: 186px;
+        }
+        .auto-style12 {
+            width: 167px;
+        }
+        .auto-style13 {
+            width: 232px;
+        }
+        .auto-style14 {
+            width: 158px;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <p aria-setsize="10" class="auto-style3">
-            Welcome to ImageHome!</p>
-        <p class="auto-style4">
-            Please Select an Option Below:</p>
+            <table style="width:100%;">
+                <tr>
+                    <td class="auto-style14">&nbsp;</td>
+                    <td>WELCOME TO IMAGEHUB!</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style14">&nbsp;</td>
+                    <td>Please select an option below:</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style14">
         <asp:Button ID="btnAll" runat="server" CssClass="auto-style2" Height="54px" OnClick="Button1_Click" Text="View All" Width="88px" />
+                    </td>
+                    <td>
         <asp:Button ID="btnDel" runat="server" CssClass="auto-style1" Height="54px" Text="Add or Delete" Width="88px" OnClick="btnDel_Click" />
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style14">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+        </p>
         <asp:MultiView ID="MultiView1" runat="server" OnActiveViewChanged="MultiView1_ActiveViewChanged">
             <asp:View ID="viewAddDel" runat="server">
-                <asp:Label ID="Label2" runat="server" Text="Please Select Image to Upload:"></asp:Label>
-                <asp:FileUpload ID="FileUpload1" runat="server" CssClass="auto-style9" />
-                <asp:Button ID="Button1" runat="server" CssClass="auto-style8" OnClick="Button1_Click1" Text="Add Image to Database" />
-                <asp:Label runat="server" Text="Please Enter the Filename of the Image to be Deleted:"></asp:Label>
-                <asp:TextBox ID="boxDel" runat="server" CssClass="auto-style10"></asp:TextBox>
-                <asp:Button ID="Button2" runat="server" CssClass="auto-style7" Text="Remove Image from Database" OnClick="Button2_Click" />
+                <table style="width:100%;">
+                    <tr>
+                        <td class="auto-style12">
+                            <asp:Label ID="Label2" runat="server" Text="Please Select Image to Upload:"></asp:Label>
+                        </td>
+                        <td class="auto-style13">
+                            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="auto-style9" />
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style12">&nbsp;</td>
+                        <td class="auto-style13">
+                            <asp:Button ID="Button1" runat="server" CssClass="auto-style8" OnClick="Button1_Click1" Text="Add Image to Database" />
+                        </td>
+                        <td>
+                            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="DataSource2" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
+                                <Columns>
+                                    <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                                    <asp:BoundField DataField="FILENAME" HeaderText="FILENAME" SortExpression="FILENAME" />
+                                </Columns>
+                            </asp:GridView>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style12">
+                            <asp:Label runat="server" Text="Please Enter the Filename of the Image to be Deleted:"></asp:Label>
+                        </td>
+                        <td class="auto-style13">
+                            <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="FILENAME" DataValueField="FILENAME" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
+                            </asp:DropDownList>
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
             </asp:View>
             <asp:View ID="viewAll" runat="server">
-                <asp:Label ID="Label1" runat="server" Text="Enter Filename to Search By:"></asp:Label>
-                <asp:TextBox ID="txtSearch" runat="server" CssClass="auto-style5" Width="130px"></asp:TextBox>
-                <asp:Button ID="btnSearch" runat="server" CssClass="auto-style6" Text="Search" />
+                <table style="width:100%;">
+                    <tr>
+                        <td class="auto-style11">
+                            <asp:Label ID="Label1" runat="server" Text="Select Filename to Search for:"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="FILENAME" DataValueField="FILENAME" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                                <asp:ListItem></asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" SelectCommand="SELECT [ID], [FILENAME] FROM [PICS] ORDER BY [ID]"></asp:SqlDataSource>
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style11">&nbsp;</td>
+                        <td>
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                                <Columns>
+                                    <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                                    <asp:BoundField DataField="FILENAME" HeaderText="FILENAME" SortExpression="FILENAME" />
+                                </Columns>
+                            </asp:GridView>
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style11">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
             </asp:View>
         </asp:MultiView>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="DataSource1">
-            <Columns>
-                <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                <asp:BoundField DataField="FILENAME" HeaderText="FILENAME" SortExpression="FILENAME" />
-            </Columns>
-        </asp:GridView>
-        <asp:SqlDataSource ID="DataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" DeleteCommand="DELETE FROM [PICS] WHERE [ID] = @original_ID AND (([FILENAME] = @original_FILENAME) OR ([FILENAME] IS NULL AND @original_FILENAME IS NULL)) AND (([DATA] = @original_DATA) OR ([DATA] IS NULL AND @original_DATA IS NULL))" InsertCommand="INSERT INTO [PICS] ([FILENAME], [DATA]) VALUES (@FILENAME, @DATA)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [PICS]" UpdateCommand="UPDATE [PICS] SET [FILENAME] = @FILENAME, [DATA] = @DATA WHERE [ID] = @original_ID AND (([FILENAME] = @original_FILENAME) OR ([FILENAME] IS NULL AND @original_FILENAME IS NULL)) AND (([DATA] = @original_DATA) OR ([DATA] IS NULL AND @original_DATA IS NULL))">
-            <DeleteParameters>
-                <asp:Parameter Name="original_ID" Type="Int32" />
-                <asp:Parameter Name="original_FILENAME" Type="String" />
-                <asp:Parameter Name="original_DATA" Type="Object" />
-            </DeleteParameters>
-            <InsertParameters>
-                <asp:Parameter Name="FILENAME" Type="String" />
-                <asp:Parameter Name="DATA" Type="Object" />
-            </InsertParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="FILENAME" Type="String" />
-                <asp:Parameter Name="DATA" Type="Object" />
-                <asp:Parameter Name="original_ID" Type="Int32" />
-                <asp:Parameter Name="original_FILENAME" Type="String" />
-                <asp:Parameter Name="original_DATA" Type="Object" />
-            </UpdateParameters>
+        <asp:Image ID="displayImage" runat="server" />
+        <asp:SqlDataSource ID="DataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" SelectCommand="SELECT * FROM [PICS] ORDER BY [FILENAME]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="DataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [PICS] WHERE ([FILENAME] LIKE '%' + @FILENAME + '%') ORDER BY [FILENAME]">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="DropDownList1" Name="FILENAME" PropertyName="SelectedValue" Type="String" />
+            </SelectParameters>
         </asp:SqlDataSource>
     </form>
 </body>
