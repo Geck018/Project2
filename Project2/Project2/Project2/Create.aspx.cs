@@ -63,6 +63,7 @@ namespace Project2
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
+                Response.Redirect("Login.aspx");
             }
         }
     }

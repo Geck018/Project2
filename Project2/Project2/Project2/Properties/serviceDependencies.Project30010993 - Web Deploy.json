@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/Project2Vault30010993",
+      "type": "secrets.keyVault",
+      "connectionId": "VaultUri",
+      "secretStore": "AzureAppSettings"
+    },
+    "storage1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/picsdbstorage",
+      "type": "storage.azure",
+      "connectionId": "Connect2Storage",
+      "secretStore": "AzureKeyVault"
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/project2picsdb/databases/project2picsdb",
+      "type": "mssql.azure",
+      "connectionId": "Connect2DB",
+      "secretStore": "AzureKeyVault"
+    }
+  }
+}

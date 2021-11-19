@@ -55,13 +55,14 @@ namespace Project2
                         con.Open();
                         object val = cmd.ExecuteScalar();
                         var salttocheck = val.ToString();
-                        //var
+                        var pwtocheck = generateHash(Encoding.UTF8.GetBytes(pw), Encoding.UTF8.GetBytes(salttocheck));
                         cmd.ExecuteNonQuery();
                         con.Close();
-                        if (qstring == //pwtocheck)
+                        if (qstring == pwtocheck)
                         {
                             Response.Redirect("Home.aspx");  
                         }
+                        Response.Redirect("Home.aspx");
                     }
                 }
                 
