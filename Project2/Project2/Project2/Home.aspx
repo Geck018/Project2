@@ -115,8 +115,7 @@
                             <asp:Label ID="Label1" runat="server" Text="Select Filename to Search for:"></asp:Label>
                         </td>
                         <td>
-                            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="FILENAME" DataValueField="FILENAME" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-                                <asp:ListItem></asp:ListItem>
+                            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="FILENAME" DataValueField="ID" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                             </asp:DropDownList>
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" SelectCommand="SELECT [ID], [FILENAME] FROM [PICS] ORDER BY [ID]"></asp:SqlDataSource>
                         </td>
@@ -132,7 +131,9 @@
                                 </Columns>
                             </asp:GridView>
                         </td>
-                        <td>&nbsp;</td>
+                        <td>
+                            <asp:Image ID="displayImage" runat="server" BorderStyle="Inset" Height="450px" Width="450px" />
+                        </td>
                     </tr>
                     <tr>
                         <td class="auto-style11">&nbsp;</td>
@@ -142,7 +143,6 @@
                 </table>
             </asp:View>
         </asp:MultiView>
-        <asp:Image ID="displayImage" runat="server" />
         <asp:SqlDataSource ID="DataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" SelectCommand="SELECT * FROM [PICS] ORDER BY [FILENAME]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="DataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [PICS] WHERE ([FILENAME] LIKE '%' + @FILENAME + '%') ORDER BY [FILENAME]">
             <SelectParameters>
