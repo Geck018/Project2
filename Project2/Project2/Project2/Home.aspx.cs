@@ -89,7 +89,7 @@ namespace Project2
             displayImage.Visible = id != "0";
             if (id != "0")
             {
-                byte[] bytes = (byte[])QueryProcessor("SELECT DATA FROM PICS WHERE ID =" + id).Rows[0]["DATA"];
+                byte[] bytes = (byte[])QueryProcessor("SELECT DATA FROM PICS WHERE Id = "+id).Rows[0]["DATA"];
                 string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
                 displayImage.ImageUrl = "data:image/jpg;base64," + base64String;
             }

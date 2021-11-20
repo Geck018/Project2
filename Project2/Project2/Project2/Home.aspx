@@ -115,8 +115,7 @@
                             <asp:Label ID="Label1" runat="server" Text="Select Filename to Search for:"></asp:Label>
                         </td>
                         <td>
-                            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="FILENAME" DataValueField="FILENAME" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-                                <asp:ListItem></asp:ListItem>
+                            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="FILENAME" DataValueField="ID" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                             </asp:DropDownList>
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" SelectCommand="SELECT [ID], [FILENAME] FROM [PICS] ORDER BY [ID]"></asp:SqlDataSource>
                         </td>
