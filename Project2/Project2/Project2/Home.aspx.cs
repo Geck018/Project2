@@ -25,6 +25,9 @@ namespace Project2
         protected void Button1_Click(object sender, EventArgs e)
         {
             MultiView1.SetActiveView(viewAll);
+            DropDownList1.DataBind();
+            DropDownList2.DataBind();
+            displayImage.Visible = true;
 
         }
 
@@ -36,6 +39,9 @@ namespace Project2
         protected void btnDel_Click(object sender, EventArgs e)
         {
             MultiView1.SetActiveView(viewAddDel);
+            DropDownList1.DataBind();
+            DropDownList2.DataBind();
+            displayImage.Visible = false;
         }
 
         protected void Button1_Click1(object sender, EventArgs e)
@@ -63,14 +69,15 @@ namespace Project2
                 }
             }
             ViewAllinTable();
-            
+            DropDownList1.DataBind();
+            DropDownList2.DataBind();
+
         }
         protected void ViewAllinTable()
         {
             GridView1.DataBind();
             GridView2.DataBind();
-            DropDownList1.DataBind();
-            DropDownList2.DataBind();
+
 
         }
 
@@ -124,7 +131,8 @@ namespace Project2
             string qstring = DropDownList2.SelectedValue;
             QueryProcessor("DELETE FROM PICS WHERE FILENAME = '" + qstring + "'");
             ViewAllinTable();
-
+            DropDownList1.DataBind();
+            DropDownList2.DataBind();
         }
         protected void FetchPic(object sender, EventArgs e)
         {

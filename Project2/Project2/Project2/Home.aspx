@@ -131,7 +131,9 @@
                                 </Columns>
                             </asp:GridView>
                         </td>
-                        <td>&nbsp;</td>
+                        <td>
+                            <asp:Image ID="displayImage" runat="server" BorderStyle="Inset" Height="450px" Width="450px" />
+                        </td>
                     </tr>
                     <tr>
                         <td class="auto-style11">&nbsp;</td>
@@ -141,7 +143,6 @@
                 </table>
             </asp:View>
         </asp:MultiView>
-        <asp:Image ID="displayImage" runat="server" />
         <asp:SqlDataSource ID="DataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" SelectCommand="SELECT * FROM [PICS] ORDER BY [FILENAME]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="DataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:project2picsdbConnectionString %>" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [PICS] WHERE ([FILENAME] LIKE '%' + @FILENAME + '%') ORDER BY [FILENAME]">
             <SelectParameters>
