@@ -37,7 +37,9 @@
         <div>
             <table style="width:100%;">
                 <tr>
-                    <td class="auto-style3">&nbsp;</td>
+                    <td class="auto-style3">
+                        <asp:Image ID="Image1" runat="server" Height="160px" ImageUrl="~/LogoSample_ByTailorBrands.jpg" Width="160px" />
+                    </td>
                     <td class="auto-style1">
                         <asp:Label ID="Label1" runat="server" Font-Bold="True" Text="WELCOME TO IMAGEHUB!"></asp:Label>
                     </td>

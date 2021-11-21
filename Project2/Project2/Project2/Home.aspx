@@ -16,10 +16,6 @@
             width: 806px;
             margin-left: 280px;
         }
-        .auto-style4 {
-            width: 813px;
-            margin-left: 280px;
-        }
         .auto-style8 {
             margin-left: 18px;
         }
@@ -38,15 +34,23 @@
         .auto-style14 {
             width: 158px;
         }
+        .auto-style15 {
+            width: 76%;
+            margin-left: 0px;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <p aria-setsize="10" class="auto-style3">
-            <table style="width:100%;">
+            <table class="auto-style15">
                 <tr>
-                    <td class="auto-style14">&nbsp;</td>
-                    <td>WELCOME TO IMAGEHUB!</td>
+                    <td class="auto-style14">
+                        
+                        <asp:Image ID="Image1" runat="server" Height="160px" ImageUrl="~/LogoSample_ByTailorBrands.jpg" Width="160px" />
+                        
+                    </td>
+                    <td><strong>WELCOME TO IMAGEHUB!</strong></td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
